@@ -1,3 +1,4 @@
+LICENSE
 README.md
 setup.py
 geoframepy/__init__.py
@@ -10,3 +11,4 @@ geoframepy/timeseries/io_csv.py
 geoframepy/whetgeo1d/__init__.py
 geoframepy/whetgeo1d/grid_creator.py
 geoframepy/whetgeo1d/grid_to_netcdf.py
+geoframepy/topology/network.py

@@ -3,8 +3,8 @@ import os
 
 setuptools.setup(
     name="geoframepy",
-    version="0.0.5",
-    author="Niccolò Tubini, Riccardo Rigon",
+    version="0.0.6",
+    author="Daniele Andreis, Niccolò Tubini, Riccardo Rigon",
     author_email="tubini.niccolo@gmail.com",
     description="A Python library for the GEOframe-NewAge system",
     long_description=open(os.path.join(os.path.dirname(__file__),
