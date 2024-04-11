@@ -135,11 +135,12 @@ def filter_to_calibrate(net, nodes, outlet):
 def get_subgraph(net, gauge, gauge_id, is_calibration):
     outlet = gauge[gauge_id]
     net_up = get_up_streem_network(net, outlet)
-    reversed_dict = dict((v, k) for k, v in gauge.iteritems())
-    for key, value in reversed_dict:
-        if not net_up.has_node(key):
-            reversed_dict.pop(key)
-            gauge.pop(value)
+    reversed_dict = dict((v, k) for k, v in gauge.items())
+
+    keys_to_remove = [key for key, value in reversed_dict.items() if not net_up.has_node(key)]
+    for key in keys_to_remove:
+        value = reversed_dict.pop(key)
+        gauge.pop(value)
 
     if is_calibration:
         net_up = filter_to_calibrate(net_up, reversed_dict, outlet)
@@ -152,7 +153,7 @@ def get_subgraph(net, gauge, gauge_id, is_calibration):
     nx.set_node_attributes(net_up, 'True', 'calibrate')
     for node in nx.topological_sort(net_up):
         if node in gauge.values():
-            gauge = reversed_dict[node]
+            g = reversed_dict[node]
             if node == outlet:
                 calibrate = 'True'
             else:
@@ -160,11 +161,12 @@ def get_subgraph(net, gauge, gauge_id, is_calibration):
         else:
             parent = list(net_up.predecessors(node))
             if parent:
-                calibrate = net_up.nodes[parent]["calibrate"]
-                gauge = net_up.nodes[parent]["gauge"]
+                calibrate = net_up.nodes[parent[0]]["calibrate"]
+                g = net_up.nodes[parent[0]]["gauge"]
             else:
-                gauge = None
-        nx.set_node_attributes(net_up, {node: {'gauge': gauge, 'calibrate': calibrate}})
+                g = None
+                calibrate = 'False'
+        nx.set_node_attributes(net_up, {node: {'gauge': g, 'calibrate': calibrate}})
 
     if '0' not in net_up:
         print("error")
