@@ -238,6 +238,6 @@ def get_order_node(topo_pat, dict_path):
             p = line.split()
             gauge[p[1]] = p[0]
             sub_id.append(p[1])
-    net = get_net(topo_pat)
-    sub_id = sort_node(topo_pat, sub_id)
+    net = get_network(topo_pat)
+    sub_id = sort_node(net, sub_id)
     return [gauge[i] for i in sub_id]
