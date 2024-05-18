@@ -5,7 +5,7 @@ Created on Tue August 10 2021
 /*
  * GNU GPL v3 License (by, nc, nd, sa)
  *
- * Copyright 2021 GEOframe group
+ * Copyright 2024 GEOframe group
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
