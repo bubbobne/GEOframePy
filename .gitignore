@@ -32,3 +32,4 @@ env/
 
 # Local configuration file
 pycharm*
+/tests/test_output/
