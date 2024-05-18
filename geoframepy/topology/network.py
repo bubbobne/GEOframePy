@@ -424,3 +424,41 @@ def get_order_node(topo_pat, dict_path):
     net = get_network(topo_pat)
     sub_id = sort_node(net, sub_id)
     return [gauge[i] for i in sub_id]
+
+
+def simplify_network(topology_path, output_path):
+    """
+    Creates a dummy network where all nodes, except the node "0", point to node "0".
+
+    This function reads a network from the given topology file and modifies it so that all nodes
+    have a directed edge towards node "0". Node "0" acts as a central hub in the modified network.
+    The modified network is then written to the specified output file.
+
+    :param topology_path: The path to the file containing the original network topology. The file
+                          should be readable by the `get_network` function.
+    :param output_path: The path to the file where the modified network topology will be written.
+
+    :return: None. The function writes the modified network to the specified output file.
+
+    :example:
+        topology_path = 'path/to/original_topology_file.txt'
+        output_path = 'path/to/modified_topology_file.txt'
+        create_dummy_network(topology_path, output_path)
+    # This will create a modified network where all nodes (except "0") point to node "0"
+    # and write it to 'path/to/modified_topology_file.txt'.
+
+    :author: Daniele Andreis
+    """
+    # Read the original network
+    net = get_network(topology_path)
+
+    # Create a new directed graph for the dummy network
+    dummy_net = nx.DiGraph()
+
+    # Add nodes and edges to the dummy network
+    for node in net.nodes:
+        if node != '0':
+            dummy_net.add_edge(node, '0')
+
+    # Write the dummy network to the output file
+    write_network(dummy_net, output_path)
