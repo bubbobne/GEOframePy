@@ -2,11 +2,8 @@ Metadata-Version: 2.1
 Name: geoframepy
 Version: 0.0.6
 Summary: A Python library for the GEOframe-NewAge system
-Home-page: UNKNOWN
 Author: Daniele Andreis, Niccolò Tubini, Riccardo Rigon
 Author-email: tubini.niccolo@gmail.com
-License: UNKNOWN
-Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
 Classifier: Operating System :: OS Independent
@@ -30,5 +27,3 @@ Installation
 ------------
 
 ```pip install geoframepy```
-
-

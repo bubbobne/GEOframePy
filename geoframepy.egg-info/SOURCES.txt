@@ -9,9 +9,11 @@ geoframepy.egg-info/top_level.txt
 geoframepy/subbasins_check/__init__.py
 geoframepy/subbasins_check/geoframe_polygons.py
 geoframepy/timeseries/__init__.py
+geoframepy/timeseries/files_utils.py
 geoframepy/timeseries/io_csv.py
 geoframepy/topology/__init__.py
 geoframepy/topology/network.py
 geoframepy/whetgeo1d/__init__.py
 geoframepy/whetgeo1d/grid_creator.py
 geoframepy/whetgeo1d/grid_to_netcdf.py
+tests/test_create_nan.py
