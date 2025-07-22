@@ -122,6 +122,7 @@ def write_OMS_timeseries(df, file_name, **kwargs):
 
     if has_datetime==True:
         df.reset_index(inplace=True)
+        df[df.columns[0]] = pd.to_datetime(df[df.columns[0]]).dt.strftime('%Y-%m-%d %H:%M')
         df = df.astype(str)
     else:
         df = df.astype(str)
@@ -156,5 +157,5 @@ def write_OMS_timeseries(df, file_name, **kwargs):
         file.write(line_5)
         file.write(line_6)
         file.write(line_7)
-    df.to_csv(file_name, header=False, index=False, mode="a", date_format='%Y-%m-%d %H:%M')
+    df.to_csv(file_name, header=False, index=False, mode="a")
     print ('\n\n***SUCCESS writing!  '+ file_name)
